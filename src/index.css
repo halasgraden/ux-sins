@@ -1,0 +1,11 @@
+:root {
+    --background-color: hsl(240, 84%, 5%);
+    --body-font-size: 14px;
+    --color: hsl(0, 5%, 10%);
+}
+
+body {
+    font-size: 16px;
+    margin: 0;
+    box-sizing: border-box;
+}

@@ -1,11 +1,102 @@
+@import url('https://googleapis.com');
+
 :root {
-    --background-color: hsl(240, 84%, 5%);
+    --background-color: hsl(240, 100%, 2%);
     --body-font-size: 14px;
-    --color: hsl(0, 5%, 10%);
+    --color: hsl(0, 1%, 47%);
 }
 
 body {
     font-size: 16px;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--background-color);
+    font-size: var(--body-font-size);
+    color: var(--color);
+}
+
+/* LANDING */
+
+.landing-unclear-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.landing-unclear-nav ul {
+    padding-right: 24px;
+    margin-left: auto 0;
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    max-width: 100%;
+    justify-content: flex-end;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.landing-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 85%;
+    height: calc(100vh - 64px);
+    padding-top: 120px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.obscure-text {
+    font-size: 32px;
+    line-height: 1.1;
+    text-align: center;
+    margin: auto 0;
+}
+
+.obscure-text h1 {
+    font-weight: 400;
+}
+
+.too-many-ctas {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: auto;
+}
+
+.too-many-ctas button {
+    cursor: pointer;
+}
+
+.landing-button-variant-1 {
+    display: inline-flex;
+    padding: 16px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 6px;
+    background: var(--color);
+    color: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+.landing-button-variant-2 {
+    display: inline-flex;
+    padding: 16px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    background: none;
+    border: 1px solid var(--color);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color);
+    font-size: 16px;
 }

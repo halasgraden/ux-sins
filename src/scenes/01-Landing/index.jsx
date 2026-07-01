@@ -32,7 +32,7 @@ export default function Landing() {
           <button className="landing-button-variant-2">See Plans</button>
           <button className="landing-button-variant-1">Request Demo</button>
           <button className="landing-button-variant-2">Start Free</button>
-          <button className="landing-button-variant-1">Get Started</button>
+          <button className="landing-button-variant-1" onClick={advance}>Get Started</button>
           <button className="landing-button-variant-2">Watch Demo</button>
         </section>
       </section>

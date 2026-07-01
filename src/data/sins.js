@@ -84,9 +84,83 @@ const sins = [
     userThought: "Is it broken? Should I refresh?", 
     principle: "Doherty Threshold",
     reference: "https://lawsofux.com/doherty-threshold/"
-}
+},
 
 //ONBOARDING
+
+{
+    id: "deceiving-form",
+    scene: 2, 
+    name: "Form That Never Ends", 
+    shortDescription: "Revealing new fields as the user progresses exploits and traps them mid-commitment.", 
+    longDescription: "By hiding the form's true length and expanding progressively as the user fills it out, it exploits the effort already invested to keep them going. The user isn't choosing to continue because the form is reasonable. They're continuing because stopping feels worse than finishing.",
+    category: "Expectations", 
+    fix: "Ensure expectations are set at the very beginning.",
+    userThought: "How much more do I have to go? I'm getting bored of this.", 
+    principle: "Zeigarnik Effect",
+    reference: "https://lawsofux.com/zeigarnik-effect/"
+},
+{
+    id: "reversed-buttons",
+    scene: 2, 
+    name: "Primary? Secondary? Who Knows.", 
+    shortDescription: "Swapping button hierarchy tricks users into clicking the wrong action by exploiting their visual instincts.", 
+    longDescription: "Users have spent years learning that filled, high-contrast buttons mean primary action and ghost or muted buttons mean secondary. This convention is so deeply ingrained that most users click based on visual weight alone without reading the label.",
+    category: "Expectations", 
+    fix: "Ensure the primary CTA has clear contrast from the rest of the options.",
+    userThought: "This one looks important so I'll click it.", 
+    principle: "Jakob's Law",
+    reference: "https://lawsofux.com/jakobs-law/"
+},
+{
+    id: "broken-checkbox",
+    scene: 2, 
+    name: "Check...?", 
+    shortDescription: "A checkbox that doesn't change when clicked and looks nothing like a checkbox leaves users with no idea what state they're in.", 
+    longDescription: "A square checkbox with a checkmark fill on selection is one of the most universally understood uses in UI design. Breaking both the shape and the feedback simultaneously removes every signal the user relies on. The wrong shape creates confusion before they click, and the missing fill state creates confusion after.",
+    category: "Feedback", 
+    fix: "Use standard square checkboxes with a clear, high-contrast fill state on selection. However, never rely on shape alone to communicate state change.",
+    userThought: "Did I click that? Can I select multiple?", 
+    principle: "Affordance and Feedback",
+    reference: "https://www.uiuxatlas.com/lessons/foundations/affordances-signifiers-and-feedback/"
+},
+{
+    id: "weird-scale-progress",
+    scene: 2, 
+    name: "Are We There Yet?", 
+    shortDescription: "A progress bar that moves erratically any trust the user had in the process.", 
+    longDescription: "Progress indicators exist for one reason: to give users an honest, calibrated sense of how far they have come and how far they have left to go. The moment a progress bar moves backwards, that contract is broken. Jumping to completion at the end compounds the violation.",
+    category: "Feedback", 
+    fix: "Progress indicators should always move forward and reflect actual task completion honestly. If the scope of a task changes, communicate that change explicitly rather than silently revising the bar.",
+    userThought: "Did I do something wrong?", 
+    principle: "Visibility of System Status",
+    reference: "https://www.nngroup.com/articles/visibility-system-status/"
+},
+{
+    id: "destructive-action",
+    scene: 2, 
+    name: "Oops. It's Gone.", 
+    shortDescription: "Placing a destructive action next to a primary one at identical visual weight is a trap disguised as a choice.", 
+    longDescription: "Error prevention is one of the most fundamental principles in interface design. Destructive actions — ones that delete, reset, or permanently remove user input — should be visually distinct, physically separated, and require confirmation before executing. When a button that wipes an entire form sits at the same size, color, and weight as the button that submits it, the user's muscle memory and visual scanning become liabilities rather than assets.",
+    category: "Feedback", 
+    fix: "Separate destructive actions from primary ones physically and visually. Introduce a confirmation step to ensure the user cannot accidentally trigger an irreversible action.",
+    userThought: "I just spent eight minutes filling that out and I hit the wrong button. Now it's all gone.", 
+    principle: "Error Prevention",
+    reference: "https://www.nngroup.com/articles/ten-usability-heuristics/"
+},
+{
+    id: "placeholder-labels",
+    scene: 2, 
+    name: "What Was This Field?", 
+    shortDescription: "Placeholder text that vanishes on click leaves users with no idea what they were supposed to type.", 
+    longDescription: "Persistent labels above inputs exist because users need to know what a field is asking for before, during, and after they type. Placeholder text creates the illusion of a label while functioning as nothing of the sort. It disappears the instant the user engages with the field, which is exactly when they need the guidance most. On a long form with many fields, this forces users to click in and out repeatedly just to remember what each field is for.",
+    category: "Feedback", 
+    fix: "Always use persistent labels above inputs that remain visible during and after entry. Show input requirements before submission, not after failure.",
+    userThought: "I have to delete what I typed just to see what it's asking for. And now I have to retype it. Again.", 
+    principle: "Visibility of System Status",
+    reference: "https://www.nngroup.com/articles/ten-usability-heuristics/"
+}
+
 
 ]
 

@@ -151,7 +151,21 @@ body {
   right: 24px;
   background: #1a1a1a;
   color: #ffffff;
-  padding: 12px 20px;
+  padding: 24px 32px;
+  border-radius: 8px;
+  font-size: 14px;
+  animation: slideIn 0.3s ease forwards;
+  z-index: 1000;
+}
+
+/* SUCCESS */
+.plan-notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 24px 32px;
   border-radius: 8px;
   font-size: 14px;
   animation: slideIn 0.3s ease forwards;

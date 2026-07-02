@@ -159,6 +159,108 @@ const sins = [
     userThought: "I have to delete what I typed just to see what it's asking for. And now I have to retype it. Again.", 
     principle: "Visibility of System Status",
     reference: "https://www.nngroup.com/articles/ten-usability-heuristics/"
+},
+
+// PRODUCT
+
+{
+  id: "vague-product-description",
+  scene: 3,
+  name: "What Does This Even Do?",
+  shortDescription: "A product that can't explain itself in plain language loses users before they even start.",
+  longDescription: "Users arrive at a product with one question: what is this and why should I care? When the answer is buried in abstract language like 'collaborative workspace for modern teams,' the user has no actionable understanding of what the product does or whether it solves their problem.",
+  category: "Expectations",
+  fix: "Lead with a specific, concrete description of what the product does and who it is for.",
+  userThought: "What does it actually do? What am I supposed to click?",
+  principle: "Clarity of Communication",
+  reference: "Krug, S. (2000). Don't Make Me Think. New Riders Publishing."
+},
+{
+  id: "aggressive-empty-state",
+  scene: 3,
+  name: "Nothing Here Yet.",
+  shortDescription: "An empty state with no guidance, no action, and no empathy is a dead end dressed up as a feature.",
+  longDescription: "Empty states are one of the most underutilized design opportunities in any product. Done well, they orient the user, explain what belongs here, and provide a clear next action. Done poorly, they simply confirm that nothing exists, offer no path forward, and leave the user staring at a void wondering what they did wrong.",
+  category: "Feedback",
+  fix: "Every empty state should explain why it is empty, what the user can do to fill it, and ideally provide a direct action to get started. Treat it as an onboarding moment, not a loading failure.",
+  userThought: "So what do I do? Is there a tutorial? A guide?",
+  principle: "Visibility of System Status",
+  reference: "https://www.nngroup.com/articles/ten-usability-heuristics/"
+},
+{
+  id: "coming-soon-nav",
+  scene: 3,
+  name: "Coming Soon...?",
+  shortDescription: "Shipping a nav full of broken links isn't a roadmap preview. It's a promise you can't keep.",
+  longDescription: "Hick's Law tells us that more choices mean more cognitive load and longer decision times. A sidebar with twelve navigation items compounds this by implying the product has twelve distinct areas of functionality. The user has absorbed the cognitive cost of processing all those options.",
+  category: "cognitive load",
+  fix: "Only surface navigation items for features that actually exist. If a feature is in development, keep it off the nav entirely rather than advertising its absence.",
+  userThought: "Coming soon. Coming soon. Coming soon. Coming soon. Oh. They all say that.",
+  principle: "Hick's Law",
+  reference: "https://lawsofux.com/hicks-law/"
+},
+{
+  id: "vague-error",
+  scene: 3,
+  name: "ERR_PROJECT_NULL",
+  shortDescription: "An error message that tells the user nothing useful is worse than no error message at all.",
+  longDescription: "Good error messages do three things: explain what went wrong, explain why it went wrong, and tell the user what to do next. A message like 'Something went wrong. Please try again. (ERR_PROJECT_NULL)' does none of these. The error code sounds technical and specific while communicating nothing actionable. The user has no idea whether to retry, refresh, contact support, or simply give up.",
+  category: "feedback",
+  fix: "Write error messages in plain language that explain the specific problem and provide a concrete next step. Error codes are for logs, not users.",
+  userThought: "ERR_PROJECT_NULL. What does that mean? Should I try again?",
+  principle: "Error Prevention",
+  reference: "https://www.nngroup.com/articles/ten-usability-heuristics/"
+},
+
+// CANCEL
+
+{
+  id: "absurd-ultimatum",
+  scene: 4,
+  name: "Are You Sure?",
+  shortDescription: "Guilt-tripping users with fabricated loss statistics is manipulation dressed up as helpfulness.",
+  longDescription: "Presenting users with a list of everything they stand to lose upon cancellation is a dark pattern that weaponizes loss aversion (the psychological tendency to feel losses more acutely than equivalent gains). When those losses are fabricated, inflated, or completely meaningless, the pattern crosses from persuasion into manipulation. The user is being emotionally coerced into staying by data that was never real to begin with.",
+  category: "manipulation",
+  fix: "Let users cancel without theatrics. If you want to retain them, offer genuine value.",
+  userThought: "I have been a member for 4 minutes. Why does this feel so bad.",
+  principle: "Loss Aversion",
+  reference: "https://www.nngroup.com/articles/prospect-theory/"
+},
+{
+  id: "fitts-button",
+  scene: 4,
+  name: "Catch Me If You Can",
+  shortDescription: "A button that runs from your cursor and shrinks as you approach it is a direct violation of Fitts's Law.",
+  longDescription: "Fitts's Law states that the time required to acquire a target is a function of the distance to the target and its size. Smaller targets that are farther away take exponentially longer to click. Designing a cancel button that actively increases its distance and decreases its size as the cursor approaches is just annoying lol.",
+  category: "accessibility",
+  fix: "Buttons for valid user actions should be large enough to click comfortably, stationary, and positioned consistently. A cancel option should never be harder to reach than the alternative.",
+  userThought: "Did it just move? It got smaller. It moved again...",
+  principle: "Fitts's Law",
+  reference: "https://lawsofux.com/fittss-law/"
+},
+{
+  id: "confirmshaming",
+  scene: 4,
+  name: "So You're Giving Up?",
+  shortDescription: "Labeling the cancel confirmation as personal failure is emotional manipulation.",
+  longDescription: "Confirmshaming uses asymmetric button language to make the user feel shame, guilt, or inadequacy for choosing to cancel. Rather than presenting a neutral choice between two options, it frames one option as personal failure and the other as the obviously correct choice for anyone with self-respect. The user is not being given a decision; they are being judged for having made one.",
+  category: "manipulation",
+  fix: "Confirmation dialogs should use neutral, parallel language that respects the user's decision. 'Cancel subscription' and 'Keep subscription' are correct.",
+  userThought: "I haven't given up on anything. I just don't want this product anymore.",
+  principle: "Emotional Design and Ethical Persuasion",
+  reference: "https://www.deceptive.design/types/confirmshaming"
+},
+{
+  id: "fake-countdown",
+  scene: 4,
+  name: "Hurry!!!",
+  shortDescription: "A countdown timer without clear guidelines often creates anxiety without honesty.",
+  longDescription: "Urgency is a legitimate persuasion tool when it reflects a real constraint. A timer that counts down to nothing in particular is not urgency, but rather anxiety. The user responds to the visual of a countdown regardless of whether the stakes are real, and designers who exploit this response without backing it with genuine consequence are trading long-term trust for short-term pressure.",
+  category: "manipulation",
+  fix: "Only use countdown timers when a genuine time constraint exists. If an offer expires, it should actually expire.",
+  userThought: "I just need a second to think!",
+  principle: "Scarcity and Urgency",
+  reference: "https://www.deceptive.design"
 }
 
 

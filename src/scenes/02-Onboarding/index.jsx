@@ -16,6 +16,31 @@ const formDataInitial = {
   stressLevel: "5",
 };
 
+const hearAboutUsOptions = [
+  { value: "friend", label: "A Friend" },
+  { value: "social", label: "Social Media" },
+  { value: "search", label: "Search Engine" },
+  { value: "dream", label: "A Dream" },
+  { value: "therapist", label: "My Therapist" },
+  { value: "voices", label: "The Voices" },
+  { value: "manifested", label: "I Manifested It" },
+  { value: "no-idea", label: "Genuinely No Idea" },
+];
+
+const colorOptions = [
+  { value: "red", label: "Red" },
+  { value: "blue", label: "Blue" },
+  { value: "green", label: "Green" },
+  { value: "yellow", label: "Yellow" },
+  { value: "purple", label: "Purple" },
+  { value: "orange", label: "Orange" },
+  { value: "brown", label: "Brown" },
+  { value: "black", label: "Black" },
+  { value: "pink", label: "Pink" },
+  { value: "cyan", label: "Cyan" },
+  { value: "#FFFFFF", label: "#FFFFFF" },
+];
+
 export default function Onboarding() {
   const { advance } = useJourney();
   const [progressBar, setProgressBar] = React.useState(0);
@@ -24,6 +49,8 @@ export default function Onboarding() {
   const [submitError, setSubmitError] = React.useState(false);
 
   const [formData, setFormData] = React.useState(formDataInitial);
+
+  const tierProgress = { 1: 10, 2: 80, 3: 30 };
 
   function handleChange(fieldName, value) {
     const updatedFormData = { ...formData, [fieldName]: value };
@@ -49,6 +76,10 @@ export default function Onboarding() {
 
     const tier3Fields = ["biggestFear", "hotTake", "color", "stressLevel"];
     const tier3Complete = tier3Fields.every((key) => updatedFormData[key]);
+
+    if (tier3Complete) {
+      setTier(4);
+    }
   }
 
   function handleClear() {
@@ -64,9 +95,16 @@ export default function Onboarding() {
 
   return (
     <main>
-      <button onClick={advance}>Advance</button>
+      <div className="progress-bar">
+        <div
+          className="progress-bar-fill"
+          style={{ width: `${tierProgress[tier]}%` }}
+        ></div>
+      </div>
       <form id="onboarding-form">
         <section className="tier1-form">
+          <h2>Let's get you set up!</h2>
+          <p>This will only take a moment.</p>
           <input
             type="text"
             value={formData.username}
@@ -130,6 +168,30 @@ export default function Onboarding() {
               </select>
             </div>
 
+            <div className="hearAboutUs-container">
+              <label>How did you hear about us?</label>
+              <div className="hearAboutUs-options">
+                {hearAboutUsOptions.map((option) => (
+                  <label key={option.value} className="hearAboutUs-option">
+                    <input
+                      type="checkbox"
+                      checked={formData.hearAboutUs.includes(option.value)}
+                      onChange={() =>
+                        handleChange(
+                          "hearAboutUs",
+                          formData.hearAboutUs.includes(option.value)
+                            ? formData.hearAboutUs.filter(
+                                (value) => value !== option.value,
+                              )
+                            : [...formData.hearAboutUs, option.value],
+                        )
+                      }
+                    />
+                    {option.label}
+                  </label>
+                ))}
+              </div>
+            </div>
             <div className="teamSize-container">
               <label>How big is your team?</label>
               <select
@@ -147,31 +209,6 @@ export default function Onboarding() {
                 <option value="define-team">Define "Team"</option>
                 <option value="too-many">Too Many</option>
                 <option value="not-enough">Not Enough</option>
-              </select>
-            </div>
-            <div className="hearAboutUs-container">
-              <label>How did you hear about us?</label>
-              <select
-                multiple
-                value={formData.hearAboutUs}
-                onChange={(e) =>
-                  handleChange(
-                    "hearAboutUs",
-                    Array.from(
-                      e.target.selectedOptions,
-                      (option) => option.value,
-                    ),
-                  )
-                }
-              >
-                <option value="friend">A Friend</option>
-                <option value="social">Social Media</option>
-                <option value="search">Search Engine</option>
-                <option value="dream">A Dream</option>
-                <option value="therapist">My Therapist</option>
-                <option value="voices">The Voices</option>
-                <option value="manifested">I Manifested It</option>
-                <option value="no-idea">Genuinely No Idea</option>
               </select>
             </div>
           </section>
@@ -193,32 +230,34 @@ export default function Onboarding() {
 
             <div className="color-container">
               <label>What's your favorite color?</label>
-              <select
-                value={formData.color}
-                onChange={(e) => handleChange("color", e.target.value)}
-              >
-                <option value="">Pick a color</option>
-                <option value="red">Red</option>
-                <option value="blue">Blue</option>
-                <option value="green">Green</option>
-                <option value="yellow">Yellow</option>
-                <option value="purple">Purple</option>
-                <option value="orange">Orange</option>
-                <option value="brown">Brown</option>
-                <option value="black">Black</option>
-                <option value="pink">Pink</option>
-                <option value="cyan">Cyan</option>
-                <option value="#FFFFFF">#FFFFFF</option>
-              </select>
+              <div className="color-options">
+                {colorOptions.map((option) => (
+                  <label key={option.value} className="color-option">
+                    <input
+                      type="checkbox"
+                      checked={formData.color === option.value}
+                      onChange={() => handleChange("color", option.value)}
+                    />
+                    {option.label}
+                  </label>
+                ))}
+              </div>
             </div>
-
-            <input
-              type="range"
-              min={1}
-              max={10}
-              value={formData.stressLevel}
-              onChange={(e) => handleChange("stressLevel", e.target.value)}
-            />
+            <div className="stress-container">
+              <label>Stress Level</label>
+              <div className="stress-scale">
+                <span>1</span>
+                <input
+                  type="range"
+                  min={1}
+                  max={10}
+                  step={1}
+                  value={formData.stressLevel}
+                  onChange={(e) => handleChange("stressLevel", e.target.value)}
+                />
+                <span>10</span>
+              </div>
+            </div>
           </section>
         )}
         <section className="end-of-form">
@@ -243,7 +282,7 @@ export default function Onboarding() {
             className="submit-button"
             onClick={(e) => {
               e.preventDefault();
-              if (checkbox) {
+              if (checkbox && tier === 4) {
                 advance();
               } else {
                 setSubmitError(true);
@@ -252,7 +291,7 @@ export default function Onboarding() {
           >
             Submit
           </button>
-          <button className="clear-button" onClick={handleClear}>
+          <button type="button" className="clear-button" onClick={handleClear}>
             Clear
           </button>
         </section>

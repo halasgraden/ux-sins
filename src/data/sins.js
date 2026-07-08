@@ -31,7 +31,7 @@ const sins = [
     name: "Choose What's Important", 
     shortDescription: "When everything competes for attention equally, the user's eye has nowhere to land.", 
     longDescription: "Creating emphasis involves size, spacing, weight, and layout. Without proper use of these elements, your visual hierarchy is unclear and elements that should be emphasized get lost in the page.",
-    category: "Category (enum?)", 
+    category: "Cognitive Load", 
     fix: "Utilize size, spacing, weight, and layout to make your element stand out.",
     userThought: "What am I supposed to be looking at? Everything looks the same.", 
     principle: "Visual Hierarchy",
@@ -59,7 +59,7 @@ const sins = [
     fix: "Make your messaging match your brand and any promotional content, and explain your site in concise, specific terms a first-time visitor can understand immediately.",
     userThought: "What does this platform do? What am I supposed to do? This wasn't like the ads...",
     principle: "Clarity of Communication",
-    reference: "Krug, S. (2000). Don't Make Me Think. New Riders Publishing."
+    reference: "https://www.heliosdesign.com/blog/web/insights-from-dont-make-me-think-by-steve-krug.html"
 },
 {
     id: "double-popup",
@@ -71,7 +71,7 @@ const sins = [
     fix: "Don't overdo it. Have one popup max, and avoid overtaking the entire screen.",
     userThought: "I haven't even read anything yet. Why are is it yelling at me?", 
     principle: "Respect for User Attention",
-    reference: "Nielsen, J. (2000). Stop the Pop-Ups. Nielsen Norman Group. https://www.nngroup.com/articles/stop-the-pop-ups/"
+    reference: "https://www.nngroup.com/articles/stop-the-pop-ups/"
 },
 {
     id: "slow-load",
@@ -173,7 +173,7 @@ const sins = [
   fix: "Lead with a specific, concrete description of what the product does and who it is for.",
   userThought: "What does it actually do? What am I supposed to click?",
   principle: "Clarity of Communication",
-  reference: "Krug, S. (2000). Don't Make Me Think. New Riders Publishing."
+  reference: "https://www.heliosdesign.com/blog/web/insights-from-dont-make-me-think-by-steve-krug.html"
 },
 {
   id: "aggressive-empty-state",
@@ -193,7 +193,7 @@ const sins = [
   name: "Coming Soon...?",
   shortDescription: "Shipping a nav full of broken links isn't a roadmap preview. It's a promise you can't keep.",
   longDescription: "Hick's Law tells us that more choices mean more cognitive load and longer decision times. A sidebar with twelve navigation items compounds this by implying the product has twelve distinct areas of functionality. The user has absorbed the cognitive cost of processing all those options.",
-  category: "cognitive load",
+  category: "Cognitive load",
   fix: "Only surface navigation items for features that actually exist. If a feature is in development, keep it off the nav entirely rather than advertising its absence.",
   userThought: "Coming soon. Coming soon. Coming soon. Coming soon. Oh. They all say that.",
   principle: "Hick's Law",
@@ -205,7 +205,7 @@ const sins = [
   name: "ERR_PROJECT_NULL",
   shortDescription: "An error message that tells the user nothing useful is worse than no error message at all.",
   longDescription: "Good error messages do three things: explain what went wrong, explain why it went wrong, and tell the user what to do next. A message like 'Something went wrong. Please try again. (ERR_PROJECT_NULL)' does none of these. The error code sounds technical and specific while communicating nothing actionable. The user has no idea whether to retry, refresh, contact support, or simply give up.",
-  category: "feedback",
+  category: "Feedback",
   fix: "Write error messages in plain language that explain the specific problem and provide a concrete next step. Error codes are for logs, not users.",
   userThought: "ERR_PROJECT_NULL. What does that mean? Should I try again?",
   principle: "Error Prevention",
@@ -220,7 +220,7 @@ const sins = [
   name: "Are You Sure?",
   shortDescription: "Guilt-tripping users with fabricated loss statistics is manipulation dressed up as helpfulness.",
   longDescription: "Presenting users with a list of everything they stand to lose upon cancellation is a dark pattern that weaponizes loss aversion (the psychological tendency to feel losses more acutely than equivalent gains). When those losses are fabricated, inflated, or completely meaningless, the pattern crosses from persuasion into manipulation. The user is being emotionally coerced into staying by data that was never real to begin with.",
-  category: "manipulation",
+  category: "Manipulation",
   fix: "Let users cancel without theatrics. If you want to retain them, offer genuine value.",
   userThought: "I have been a member for 4 minutes. Why does this feel so bad.",
   principle: "Loss Aversion",
@@ -232,7 +232,7 @@ const sins = [
   name: "Catch Me If You Can",
   shortDescription: "A button that runs from your cursor and shrinks as you approach it is a direct violation of Fitts's Law.",
   longDescription: "Fitts's Law states that the time required to acquire a target is a function of the distance to the target and its size. Smaller targets that are farther away take exponentially longer to click. Designing a cancel button that actively increases its distance and decreases its size as the cursor approaches is just annoying lol.",
-  category: "accessibility",
+  category: "Accessibility",
   fix: "Buttons for valid user actions should be large enough to click comfortably, stationary, and positioned consistently. A cancel option should never be harder to reach than the alternative.",
   userThought: "Did it just move? It got smaller. It moved again...",
   principle: "Fitts's Law",
@@ -244,7 +244,7 @@ const sins = [
   name: "So You're Giving Up?",
   shortDescription: "Labeling the cancel confirmation as personal failure is emotional manipulation.",
   longDescription: "Confirmshaming uses asymmetric button language to make the user feel shame, guilt, or inadequacy for choosing to cancel. Rather than presenting a neutral choice between two options, it frames one option as personal failure and the other as the obviously correct choice for anyone with self-respect. The user is not being given a decision; they are being judged for having made one.",
-  category: "manipulation",
+  category: "Manipulation",
   fix: "Confirmation dialogs should use neutral, parallel language that respects the user's decision. 'Cancel subscription' and 'Keep subscription' are correct.",
   userThought: "I haven't given up on anything. I just don't want this product anymore.",
   principle: "Emotional Design and Ethical Persuasion",
@@ -256,7 +256,7 @@ const sins = [
   name: "Hurry!!!",
   shortDescription: "A countdown timer without clear guidelines often creates anxiety without honesty.",
   longDescription: "Urgency is a legitimate persuasion tool when it reflects a real constraint. A timer that counts down to nothing in particular is not urgency, but rather anxiety. The user responds to the visual of a countdown regardless of whether the stakes are real, and designers who exploit this response without backing it with genuine consequence are trading long-term trust for short-term pressure.",
-  category: "manipulation",
+  category: "Manipulation",
   fix: "Only use countdown timers when a genuine time constraint exists. If an offer expires, it should actually expire.",
   userThought: "I just need a second to think!",
   principle: "Scarcity and Urgency",

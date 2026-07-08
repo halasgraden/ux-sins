@@ -64,6 +64,7 @@ export default function Onboarding() {
 
   return (
     <main>
+      <button onClick={advance}>Advance</button>
       <form id="onboarding-form">
         <section className="tier1-form">
           <input

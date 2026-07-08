@@ -43,6 +43,7 @@ export default function Product() {
 
   return (
     <main id="product-container">
+      <button onClick={advance}>Advance</button>
       <header>
         <h1>Synergy</h1>
       </header>

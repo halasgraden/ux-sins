@@ -17,6 +17,7 @@ export default function Success() {
 
   return ( 
     <main>
+      <button onClick={advance}>Advance</button>
       <Confetti />
       <section className="success-container">
         <h1>You've successfully cancelled your Synergy subscription.</h1>

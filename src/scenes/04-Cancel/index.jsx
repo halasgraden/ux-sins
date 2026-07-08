@@ -71,6 +71,7 @@ export default function Cancel() {
 
   return (
     <main id="cancel-container">
+      <button onClick={advance}>Advance</button>
       {currentStep == 1 && (
         <section className="profile-container">
           <header className="billing-header">

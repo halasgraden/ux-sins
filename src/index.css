@@ -1,7 +1,7 @@
 @import url('https://googleapis.com');
 
 :root {
-    --background-color: hsl(240, 100%, 2%);
+    --background-color: hsl(0, 0%, 5%);
     --body-font-size: 14px;
     --color: hsl(0, 1%, 47%);
 }
@@ -18,6 +18,11 @@ body {
 
 /* LANDING */
 
+.landing-main-container {
+    background-color: var(--background-color);
+    color: hsl(0, 0%, 30%);
+}
+
 .landing-unclear-nav {
     position: fixed;
     top: 0;
@@ -27,79 +32,149 @@ body {
 }
 
 .landing-unclear-nav ul {
-    padding-right: 24px;
-    margin-left: auto 0;
+    padding: 0.625rem 1.5rem;
+    margin: 0;
     list-style: none;
     display: flex;
-    gap: 16px;
-    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: flex-end;
     align-items: flex-start;
+    color: #4d4d4d;
+    font-size: 0.875rem;
     cursor: pointer;
 }
 
-.landing-container {
+main:has(.landing-container) {
     position: relative;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+.landing-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    max-width: 85%;
-    height: calc(100vh - 64px);
-    padding-top: 120px;
-    margin: 0 auto;
-    box-sizing: border-box;
+    gap: 42px;
+    width: min(90%, 900px);
 }
 
 .obscure-text {
-    font-size: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     line-height: 1.1;
     text-align: center;
-    margin: auto 0;
-    max-width: 70%;
+    width: 100%;
+    max-width: 900px;
 }
 
 .obscure-text h1 {
-    font-weight: 400;
+    margin: 0;
+    font-weight: 500;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: #ce3227;
+    text-shadow: 0px 4px 19.9px rgba(206, 50, 39, 0.35);
+}
+
+.obscure-text p {
+    margin: 0;
+    font-size: clamp(1.125rem, 2.5vw, 2rem);
+    color: #4d4d4d;
 }
 
 .too-many-ctas {
     display: flex;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     align-items: center;
-    margin-top: auto;
-}
-
-.too-many-ctas button {
-    cursor: pointer;
-}
-
-.landing-button-variant-1 {
-    display: inline-flex;
-    padding: 16px 20px;
     justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border: none;
-    border-radius: 6px;
-    background: var(--color);
-    color: none;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
 }
 
-.landing-button-variant-2 {
+.landing-button-variant {
     display: inline-flex;
-    padding: 16px 20px;
+    padding: 1rem 1.25rem;
     justify-content: center;
     align-items: center;
     gap: 10px;
     border-radius: 6px;
     background: none;
     border: 1px solid var(--color);
-    font-family: 'Montserrat', sans-serif;
     color: var(--color);
-    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.testimonials-landing-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px 40px;
+    width: min(90%, 1346px);
+    padding-bottom: clamp(1rem, 3vh, 4rem);
+}
+
+.testimonials-landing-container h4 {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    color: #4d4d4d;
+}
+
+.testimonial-container {
+    display: flex;
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    max-width: 422px;
+    text-align: center;
+}
+
+.testimonial-container h2 {
+    margin: 0;
+    font-weight: 500;
+    font-size: clamp(1rem, 2.4vw, 2rem);
+    color: #4d4d4d;
+}
+
+.testimonial-container p {
+    margin: 0;
+    font-size: clamp(0.8125rem, 1.4vw, 1rem);
+    color: #4d4d4d;
+}
+
+.testimonial-container img {
+    width: clamp(6rem, 10vw, 146px);
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .landing-unclear-nav ul {
+        gap: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .landing-button-variant {
+        padding: 0.625rem 0.875rem;
+        font-size: 0.75rem;
+    }
 }
 
 /* ONBOARDING */
@@ -171,6 +246,9 @@ body {
   animation: slideIn 0.3s ease forwards;
   z-index: 1000;
 }
+
+/* ANALYSIS */
+
 
 @keyframes slideIn {
   from {

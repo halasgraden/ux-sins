@@ -252,6 +252,7 @@ const sins = [
   id: "fake-countdown",
   scene: 4,
   name: "Hurry!!!",
+  image: sinImage("hurry!!!.png"),
   shortDescription: "A countdown timer without clear guidelines often creates anxiety without honesty.",
   longDescription: "Urgency is a legitimate persuasion tool when it reflects a real constraint. A timer that counts down to nothing in particular is not urgency, but rather anxiety. The user responds to the visual of a countdown regardless of whether the stakes are real, and designers who exploit this response without backing it with genuine consequence are trading long-term trust for short-term pressure.",
   category: "Manipulation",

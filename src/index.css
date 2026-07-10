@@ -109,7 +109,6 @@ main:has(.landing-container) {
     color: #4d4d4d;
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
-    font-weight: 600;
     cursor: pointer;
 }
 
@@ -913,7 +912,7 @@ main:has(.success-container) {
   padding: 12px 20px;
   background: transparent;
   border: 1px solid #333;
-  border-radius: 1000px;
+  border-radius: 6px;
   color: #bfbfbf;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;

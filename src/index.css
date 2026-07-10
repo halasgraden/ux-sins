@@ -105,8 +105,8 @@ main:has(.landing-container) {
     gap: 10px;
     border-radius: 6px;
     background: none;
-    border: 1.5px solid var(--color);
-    color: var(--color);
+    border: 1.5px solid #4d4d4d;
+    color: #4d4d4d;
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     font-weight: 600;

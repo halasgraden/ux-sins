@@ -13,6 +13,7 @@ export function JourneyProvider({children}) {
 
     //helper functions
     function advance() {
+        setLensOn(false)
         if (currentScene < NUM_SCENES) {
             setCurrentScene(prevScene => prevScene + 1)
         } else {
@@ -21,6 +22,7 @@ export function JourneyProvider({children}) {
     }
 
     function goBack() {
+        setLensOn(false)
         if (currentScene > 1) {
             setCurrentScene(prevScene => prevScene - 1)
         }

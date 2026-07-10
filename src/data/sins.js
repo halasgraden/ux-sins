@@ -61,30 +61,6 @@ const sins = [
     principle: "Clarity of Communication",
     reference: "https://www.heliosdesign.com/blog/web/insights-from-dont-make-me-think-by-steve-krug.html"
 },
-{
-    id: "double-popup",
-    scene: 1, 
-    name: "Surprise Frustration", 
-    shortDescription: "Multiple popups simultaneously hijacks the user's attention and signals that the site values its own agenda over the user's.",
-    longDescription: "Popups work when they are timely, singular, and relevant. When two fire back-to-back, the user is forced to make an immediate decision before they have even oriented themselves to the page. This pattern treats attention as something to be seized rather than earned, and the resulting frustration is one of the fastest ways to drive a user off the site.",
-    category: "Autonomy", 
-    fix: "Don't overdo it. Have one popup max, and avoid overtaking the entire screen.",
-    userThought: "I haven't even read anything yet. Why are is it yelling at me?", 
-    principle: "Respect for User Attention",
-    reference: "https://www.nngroup.com/articles/stop-the-pop-ups/"
-},
-{
-    id: "slow-load",
-    scene: 1, 
-    name: "The Waiting Game", 
-    shortDescription: "Every millisecond past 400ms is a millisecond the user spends reconsidering whether they actually need your product.", 
-    longDescription: "The Doherty Threshold establishes that both user and system must respond to each other within 400ms to maintain engagement and a feeling of flow. Beyond that threshold, users disengage. They stop feeling like they are operating a tool and start feeling like they are waiting for one.",
-    category: "Feedback", 
-    fix: "Optimize load times to stay under 400ms where possible. If a wait is unavoidable, use honest progress indicators.",
-    userThought: "Is it broken? Should I refresh?", 
-    principle: "Doherty Threshold",
-    reference: "https://lawsofux.com/doherty-threshold/"
-},
 
 //ONBOARDING
 
@@ -128,7 +104,7 @@ const sins = [
     id: "weird-scale-progress",
     scene: 2, 
     name: "Are We There Yet?", 
-    shortDescription: "A progress bar that moves erratically any trust the user had in the process.", 
+    shortDescription: "A progress bar that moves erratically loses any trust the user had in the process.", 
     longDescription: "Progress indicators exist for one reason: to give users an honest, calibrated sense of how far they have come and how far they have left to go. The moment a progress bar moves backwards, that contract is broken. Jumping to completion at the end compounds the violation.",
     category: "Feedback", 
     fix: "Progress indicators should always move forward and reflect actual task completion honestly. If the scope of a task changes, communicate that change explicitly rather than silently revising the bar.",

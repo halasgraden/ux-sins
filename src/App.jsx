@@ -1,4 +1,8 @@
+import "./overlay/lens-overlay.css"
 import { JourneyProvider, useJourney } from "./context/JourneyProvider";
+import DesignerLens from "./overlay/DesignerLens.jsx"
+import LensOverlay from "./overlay/LensOverlay.jsx"
+import LensProvider from "./overlay/LensProvider.jsx"
 import Landing from "./scenes/01-Landing"
 import Onboarding from "./scenes/02-Onboarding"
 import Product from "./scenes/03-Product"
@@ -24,7 +28,11 @@ function SceneRouter() {
 export default function App() {
   return (
     <JourneyProvider>
+      <LensProvider>
         <SceneRouter />
+        <DesignerLens />
+        <LensOverlay />
+      </LensProvider>
     </JourneyProvider>
   )
 }

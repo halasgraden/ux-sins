@@ -20,6 +20,12 @@ export function JourneyProvider({children}) {
         }
     }
 
+    function goBack() {
+        if (currentScene > 1) {
+            setCurrentScene(prevScene => prevScene - 1)
+        }
+    }
+
     function triggerSin(sinID) {
         setSinsSeen(prevArr => [...new Set([...prevArr, sinID])])
     }
@@ -32,6 +38,7 @@ export function JourneyProvider({children}) {
     const contextValue = React.useMemo(() => ({
     currentScene,
     advance,
+    goBack,
     sinsSeen,
     triggerSin,
     lensOn,

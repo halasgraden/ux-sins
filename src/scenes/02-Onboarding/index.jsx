@@ -43,11 +43,11 @@ const colorOptions = [
 
 export default function Onboarding() {
   const { advance } = useJourney();
-  const [progressBar, setProgressBar] = React.useState(0);
   const [tier, setTier] = React.useState(1);
   const [checkbox, setCheckbox] = React.useState(false);
   const [submitError, setSubmitError] = React.useState(false);
-
+  const [passwordError, setPasswordError] = React.useState(false);
+  const [emailError, setEmailError] = React.useState(false);
   const [formData, setFormData] = React.useState(formDataInitial);
 
   const tierProgress = { 1: 10, 2: 80, 3: 30 };
@@ -56,11 +56,26 @@ export default function Onboarding() {
     const updatedFormData = { ...formData, [fieldName]: value };
     setFormData(updatedFormData);
 
+    const passwordsMatch =
+      updatedFormData.password === updatedFormData.confirmPassword;
+    setPasswordError(
+      updatedFormData.password &&
+        updatedFormData.confirmPassword &&
+        !passwordsMatch,
+    );
+
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    const emailValid = emailRegex.test(updatedFormData.email);
+
+    setEmailError(updatedFormData.email && !emailValid);
+
     const tier1Fields = ["username", "email", "password", "confirmPassword"];
     const tier1Complete = tier1Fields.every((key) => updatedFormData[key]);
 
-    if (tier1Complete) {
+    if (tier1Complete && passwordsMatch && emailValid) {
       setTier(2);
+    } else if (!passwordsMatch) {
+      setTier(1);
     }
 
     const tier2Fields = ["company", "role", "teamSize", "hearAboutUs"];
@@ -87,6 +102,8 @@ export default function Onboarding() {
     setTier(1);
     setCheckbox(false);
     setSubmitError(false);
+    setPasswordError(false);
+    setEmailError(false);
   }
 
   function toggleCheckbox() {
@@ -117,6 +134,11 @@ export default function Onboarding() {
             placeholder="Email"
             onChange={(e) => handleChange("email", e.target.value)}
           />
+          {emailError && (
+            <p className="error-message">
+              Invalid email address. Please try again.
+            </p>
+          )}
           <input
             type="password"
             value={formData.password}
@@ -129,6 +151,11 @@ export default function Onboarding() {
             placeholder="Confirm password"
             onChange={(e) => handleChange("confirmPassword", e.target.value)}
           />
+          {passwordError && (
+            <p className="error-message">
+              Passwords do not match. Please try again.
+            </p>
+          )}
         </section>
         {tier >= 2 && (
           <section className="tier2-form">
@@ -139,7 +166,7 @@ export default function Onboarding() {
               onChange={(e) => handleChange("company", e.target.value)}
             />
             <div className="role-container">
-              <label>What is your role?</label>
+              {/* <label>What is your role?</label> */}
               <select
                 value={formData.role}
                 onChange={(e) => handleChange("role", e.target.value)}
@@ -193,7 +220,7 @@ export default function Onboarding() {
               </div>
             </div>
             <div className="teamSize-container">
-              <label>How big is your team?</label>
+              {/* <label>How big is your team?</label> */}
               <select
                 value={formData.teamSize}
                 onChange={(e) => handleChange("teamSize", e.target.value)}

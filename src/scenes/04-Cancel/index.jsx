@@ -1,11 +1,12 @@
 import { useJourney } from "../../context/JourneyProvider.jsx";
+import { ArrowLeft } from "lucide-react";
 import React from "react";
 
 export default function Cancel() {
   const [currentStep, setCurrentStep] = React.useState(1);
   const [secondsLeft, setSecondsLeft] = React.useState(30);
 
-  const { advance } = useJourney();
+  const { advance, goBack } = useJourney();
 
   // renewal date
   const currentDate = new Date();
@@ -17,8 +18,42 @@ export default function Cancel() {
   });
 
   const buttonRef = React.useRef(null);
+  const currentStepRef = React.useRef(currentStep);
   const [buttonPos, setButtonPos] = React.useState({ x: 0, y: 0 });
   const [buttonSize, setButtonSize] = React.useState(200);
+
+  currentStepRef.current = currentStep;
+
+  function constrainButtonPosition(centerX, centerY, size) {
+    const half = size / 2;
+    const clampedCenterX = Math.max(
+      half,
+      Math.min(centerX, window.innerWidth - half),
+    );
+    const clampedCenterY = Math.max(
+      half,
+      Math.min(centerY, window.innerHeight - half),
+    );
+
+    return {
+      x: clampedCenterX - half,
+      y: clampedCenterY - half,
+    };
+  }
+
+  React.useEffect(() => {
+    if (currentStep !== 3) return;
+
+    setSecondsLeft(30);
+    setButtonSize(200);
+    setButtonPos(
+      constrainButtonPosition(
+        window.innerWidth / 2,
+        window.innerHeight / 2,
+        200,
+      ),
+    );
+  }, [currentStep]);
 
   // fitts button + calculating cursor
   React.useEffect(() => {
@@ -30,21 +65,25 @@ export default function Cancel() {
     if (currentStep !== 3) return;
 
     const timer = setInterval(() => {
-      setSecondsLeft((prev) => {
-        if (prev <= 1) return 30;
-        return prev - 1;
-      });
+      setSecondsLeft((prev) => prev - 1);
     }, 1000);
 
     return () => clearInterval(timer);
   }, [currentStep]);
+
+  React.useEffect(() => {
+    if (currentStep !== 3 || secondsLeft > 0) return;
+
+    setCurrentStep(2);
+    setSecondsLeft(30);
+  }, [currentStep, secondsLeft]);
 
   function advanceStep() {
     setCurrentStep((prevStep) => prevStep + 1);
   }
 
   function handleMouseMove(e) {
-    if (!buttonRef.current) return;
+    if (!buttonRef.current || currentStepRef.current !== 3) return;
 
     const cursorX = e.clientX;
     const cursorY = e.clientY;
@@ -52,28 +91,38 @@ export default function Cancel() {
     const rect = buttonRef.current.getBoundingClientRect();
     const buttonCenterX = rect.left + rect.width / 2;
     const buttonCenterY = rect.top + rect.height / 2;
+    const size = rect.width;
 
     const distance = Math.hypot(
       cursorX - buttonCenterX,
       cursorY - buttonCenterY,
     );
 
-    const newPosition = {
+    const newCenter = {
       x: buttonCenterX + (buttonCenterX - cursorX) * 0.3,
       y: buttonCenterY + (buttonCenterY - cursorY) * 0.3,
     };
 
     if (distance < 150) {
-      setButtonSize((prev) => Math.max(80, prev - 2));
-      setButtonPos(newPosition);
+      const nextSize = Math.max(80, size - 2);
+      setButtonSize(nextSize);
+      setButtonPos(constrainButtonPosition(newCenter.x, newCenter.y, nextSize));
     }
   }
 
   return (
     <main id="cancel-container">
-      <button onClick={advance}>Advance</button>
       {currentStep == 1 && (
-        <section className="profile-container">
+        <>
+          <button
+            type="button"
+            className="cancel-back-button"
+            onClick={goBack}
+          >
+            <ArrowLeft size={18} />
+            Back
+          </button>
+          <section className="profile-container">
           <header className="billing-header">
             <div className="billing-title">
               <h2>Plan and Billing</h2>
@@ -95,11 +144,13 @@ export default function Cancel() {
             </div>
           </div>
         </section>
+        </>
       )}
 
       {currentStep == 2 && (
         <section className="ultimatum-confirm-container">
-          <h1>Are you sure...</h1>
+          <div className="ultimatum-confirm-details">
+          <h2>Are you sure...</h2>
           <p>
             You would be giving up <strong>SO</strong> much!
           </p>
@@ -120,9 +171,10 @@ export default function Cancel() {
               Are you sure you want to leave <strong>all</strong> this behind?
             </i>
           </p>
+          </div>
           <div className="confirm-shame-buttons">
-            <button>Yes, I'm Giving Up And Hate My Team</button>
-            <button>No, Help My Team Succeed</button>
+            <button className="confirm-shame-button-1" onClick={advanceStep}>Yes, I'm Giving Up And Hate My Team</button>
+            <button className="confirm-shame-button-2" onClick={goBack}>No, Help My Team Succeed</button>
           </div>
         </section>
       )}
@@ -131,9 +183,12 @@ export default function Cancel() {
         <section className="countdown-fitts-container">
           <div className="countdown-container">
             <p>⚠️ Your cancellation expires in:</p>
-            <h1 className="countdown-timer">00:{secondsLeft}s</h1>
+            <h1 className="countdown-timer">
+              00:{String(secondsLeft).padStart(2, "0")}
+            </h1>
           </div>
           <button
+            className="fitts-button"
             ref={buttonRef}
             style={{
               position: "fixed",

@@ -43,9 +43,8 @@ export default function Product() {
 
   return (
     <main id="product-container">
-      <button onClick={advance}>Advance</button>
       <header>
-        <h1>Synergy</h1>
+        <img src="/Synergy.svg" alt="Synergy" className="product-logo" />
       </header>
 
       <section className="sidebar">
@@ -139,7 +138,7 @@ export default function Product() {
             AI Assistant
           </li>
           <li className="sidebar-link manage-subscription" onClick={advance}>
-            <Landmark size={16} />
+            <Landmark size={12} />
             Manage Subscription
           </li>
         </ul>
@@ -147,9 +146,7 @@ export default function Product() {
 
       <section className="empty-state">
         <h2>The collaborative workspace for modern teams.</h2>
-        <p>
-          <i>Nothing here yet.</i>
-        </p>
+        <p>Nothing here yet...</p>
         <button className="create-project-button" onClick={handleErrorClick}>
           Create first project +
         </button>

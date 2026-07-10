@@ -690,7 +690,7 @@ main:has(#onboarding-form) {
 
 .confirm-shame-button-1 {
   display: inline-flex;
-    padding: 1rem 1.25rem;
+    padding: 12px 16px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -804,6 +804,12 @@ main:has(#onboarding-form) {
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
 }
 
 /* SUCCESS */

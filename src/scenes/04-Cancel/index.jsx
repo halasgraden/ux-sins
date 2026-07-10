@@ -18,6 +18,7 @@ export default function Cancel() {
   });
 
   const buttonRef = React.useRef(null);
+  const minButtonSizeRef = React.useRef(200);
   const currentStepRef = React.useRef(currentStep);
   const [buttonPos, setButtonPos] = React.useState({ x: 0, y: 0 });
   const [buttonSize, setButtonSize] = React.useState(200);
@@ -43,14 +44,26 @@ export default function Cancel() {
 
   React.useEffect(() => {
     if (currentStep !== 3) return;
-
     setSecondsLeft(30);
-    setButtonSize(200);
+  }, [currentStep]);
+
+  React.useLayoutEffect(() => {
+    if (currentStep !== 3 || !buttonRef.current) return;
+
+    const button = buttonRef.current;
+    const savedWidth = button.style.width;
+    button.style.width = "max-content";
+    const naturalWidth = button.offsetWidth;
+    button.style.width = savedWidth;
+    minButtonSizeRef.current = naturalWidth;
+
+    const initialSize = Math.max(200, naturalWidth);
+    setButtonSize(initialSize);
     setButtonPos(
       constrainButtonPosition(
         window.innerWidth / 2,
         window.innerHeight / 2,
-        200,
+        initialSize,
       ),
     );
   }, [currentStep]);
@@ -104,7 +117,8 @@ export default function Cancel() {
     };
 
     if (distance < 150) {
-      const nextSize = Math.max(80, size - 2);
+      const minSize = minButtonSizeRef.current;
+      const nextSize = Math.max(minSize, size - 2);
       setButtonSize(nextSize);
       setButtonPos(constrainButtonPosition(newCenter.x, newCenter.y, nextSize));
     }

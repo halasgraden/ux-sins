@@ -3,7 +3,7 @@ export default function Testimonial(props) {
         <div className="testimonial-container">
             <h2>{props.quote}</h2>
             <p>{props.author}</p>
-            <img src="../public/5stars.svg" />
+            <img src="/5stars.svg" alt="" />
         </div>
     )
 }

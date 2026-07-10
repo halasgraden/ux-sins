@@ -18,9 +18,9 @@ export default function Sin(props) {
 
       {isOpen && (
         <div className="sin-body">
-          <img className="sin-image" alt="" />
           <div className="sin-body-content">
             <p className="sin-description">{props.longDescription}</p>
+            <img className="sin-image" src={props.image} />
             <blockquote className="sin-thought">{props.userThought}</blockquote>
           </div>
           <hr className="sin-divider" />

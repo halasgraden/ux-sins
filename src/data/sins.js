@@ -2,6 +2,7 @@
     id: "",
     scene: 2, 
     name: "Name", 
+    image: "",
     shortDescription: "This is a short description", 
     longDescription: "This is a long description",
     category: "Category (enum?)", 
@@ -11,12 +12,17 @@
     reference: "reference"
 */
 
+function sinImage(filename) {
+  return new URL(`../images/${filename}`, import.meta.url).href
+}
+
 const sins = [
     //LANDING
 {
     id: "bad-contrast-text",
     scene: 1, 
     name: "Squint and Miss", 
+    image: sinImage("squint_and_miss.png"),
     shortDescription: "Text with bad contrast causes users to put in more effort to understand its meaning than they should have to.", 
     longDescription: "Text contrast isn't just a visual preference; it's a measurable, enforceable accessibility standard. WCAG 2.1 requires a minimum contrast ratio of 4.5:1 between text and its background, a threshold set because anything lower creates genuine reading difficulty for users with low vision, color blindness, or even just a bright screen in sunlight. When designers ignore this, they're quietly excluding a portion of their users entirely.",
     category: "Accessibility", 
@@ -29,6 +35,7 @@ const sins = [
     id: "poor-hierarchy",
     scene: 1, 
     name: "Choose What's Important", 
+    image: sinImage("choose_whats_important.png"),
     shortDescription: "When everything competes for attention equally, the user's eye has nowhere to land.", 
     longDescription: "Creating emphasis involves size, spacing, weight, and layout. Without proper use of these elements, your visual hierarchy is unclear and elements that should be emphasized get lost in the page.",
     category: "Cognitive Load", 
@@ -41,6 +48,7 @@ const sins = [
     id: "too-many-ctas",
     scene: 1, 
     name: "Choice Overload", 
+    image: sinImage("choice_overload.png"),
     shortDescription: "Users become confused as the amount of complexity of choices increase.", 
     longDescription: "Hick's Law states that decision time increases logarithmically with the number of available choices, meaning every option you add compounds how long it takes a user to act. On a landing page, every call to action is a competing demand, and when there are too many, the brain stalls in choice paralysis not because the user is indecisive, but because the interface made choosing feel costly. The cruel irony is that adding more CTAs to capture more users often results in fewer clicks total.",
     category: "Cognitive Load", 
@@ -53,6 +61,7 @@ const sins = [
     id: "obscure-copy",
     scene: 1,
     name: "Lack of Intent",
+    image: sinImage("lack_of_intent.png"),
     shortDescription: "This is a personal project. It will probably not change your life. When a site can't explain what it does in plain language or it over-promises, users leave before they ever become customers.",
     longDescription: "Users arrive at a landing page with a simple question: what is this and why should I care? When the answer is buried in vague, jargon-heavy language or motivational non-statements, users cannot complete that mental transaction and move on without engaging further.",
     category: "Expectations",
@@ -67,7 +76,8 @@ const sins = [
 {
     id: "deceiving-form",
     scene: 2, 
-    name: "Form That Never Ends", 
+    name: "Form That Never Ends",
+    image: sinImage("form_that_never_ends.png"),
     shortDescription: "Revealing new fields as the user progresses exploits and traps them mid-commitment.", 
     longDescription: "By hiding the form's true length and expanding progressively as the user fills it out, it exploits the effort already invested to keep them going. The user isn't choosing to continue because the form is reasonable. They're continuing because stopping feels worse than finishing.",
     category: "Expectations", 
@@ -79,7 +89,8 @@ const sins = [
 {
     id: "reversed-buttons",
     scene: 2, 
-    name: "Primary? Secondary? Who Knows.", 
+    name: "Primary? Secondary? Who Knows.",
+    image: sinImage("primary_secondary_who_knows.png"),
     shortDescription: "Swapping button hierarchy tricks users into clicking the wrong action by exploiting their visual instincts.", 
     longDescription: "Users have spent years learning that filled, high-contrast buttons mean primary action and ghost or muted buttons mean secondary. This convention is so deeply ingrained that most users click based on visual weight alone without reading the label.",
     category: "Expectations", 
@@ -91,7 +102,8 @@ const sins = [
 {
     id: "broken-checkbox",
     scene: 2, 
-    name: "Check...?", 
+    name: "Check...?",
+    image: sinImage("check.png"),
     shortDescription: "A checkbox that doesn't change when clicked and looks nothing like a checkbox leaves users with no idea what state they're in.", 
     longDescription: "A square checkbox with a checkmark fill on selection is one of the most universally understood uses in UI design. Breaking both the shape and the feedback simultaneously removes every signal the user relies on. The wrong shape creates confusion before they click, and the missing fill state creates confusion after.",
     category: "Feedback", 
@@ -103,7 +115,8 @@ const sins = [
 {
     id: "weird-scale-progress",
     scene: 2, 
-    name: "Are We There Yet?", 
+    name: "Are We There Yet?",
+    image: sinImage("are_we_there_yet.png"),
     shortDescription: "A progress bar that moves erratically loses any trust the user had in the process.", 
     longDescription: "Progress indicators exist for one reason: to give users an honest, calibrated sense of how far they have come and how far they have left to go. The moment a progress bar moves backwards, that contract is broken. Jumping to completion at the end compounds the violation.",
     category: "Feedback", 
@@ -115,7 +128,8 @@ const sins = [
 {
     id: "destructive-action",
     scene: 2, 
-    name: "Oops. It's Gone.", 
+    name: "Oops. It's Gone.",
+    image: sinImage("oops_its_gone.png"),
     shortDescription: "Placing a destructive action next to a primary one at identical visual weight is a trap disguised as a choice.", 
     longDescription: "Error prevention is one of the most fundamental principles in interface design. Destructive actions — ones that delete, reset, or permanently remove user input — should be visually distinct, physically separated, and require confirmation before executing. When a button that wipes an entire form sits at the same size, color, and weight as the button that submits it, the user's muscle memory and visual scanning become liabilities rather than assets.",
     category: "Feedback", 
@@ -127,7 +141,8 @@ const sins = [
 {
     id: "placeholder-labels",
     scene: 2, 
-    name: "What Was This Field?", 
+    name: "What Was This Field?",
+    image: sinImage("what_was_this_field.png"),
     shortDescription: "Placeholder text that vanishes on click leaves users with no idea what they were supposed to type.", 
     longDescription: "Persistent labels above inputs exist because users need to know what a field is asking for before, during, and after they type. Placeholder text creates the illusion of a label while functioning as nothing of the sort. It disappears the instant the user engages with the field, which is exactly when they need the guidance most. On a long form with many fields, this forces users to click in and out repeatedly just to remember what each field is for.",
     category: "Feedback", 
@@ -143,6 +158,7 @@ const sins = [
   id: "vague-product-description",
   scene: 3,
   name: "What Does This Even Do?",
+  image: sinImage("what_does_this_even_do.png"),
   shortDescription: "A product that can't explain itself in plain language loses users before they even start.",
   longDescription: "Users arrive at a product with one question: what is this and why should I care? When the answer is buried in abstract language like 'collaborative workspace for modern teams,' the user has no actionable understanding of what the product does or whether it solves their problem.",
   category: "Expectations",
@@ -155,6 +171,7 @@ const sins = [
   id: "aggressive-empty-state",
   scene: 3,
   name: "Nothing Here Yet.",
+  image: sinImage("nothing_here_yet.png"),
   shortDescription: "An empty state with no guidance, no action, and no empathy is a dead end dressed up as a feature.",
   longDescription: "Empty states are one of the most underutilized design opportunities in any product. Done well, they orient the user, explain what belongs here, and provide a clear next action. Done poorly, they simply confirm that nothing exists, offer no path forward, and leave the user staring at a void wondering what they did wrong.",
   category: "Feedback",
@@ -167,6 +184,7 @@ const sins = [
   id: "coming-soon-nav",
   scene: 3,
   name: "Coming Soon...?",
+  image: sinImage("coming_soon....png"),
   shortDescription: "Shipping a nav full of broken links isn't a roadmap preview. It's a promise you can't keep.",
   longDescription: "Hick's Law tells us that more choices mean more cognitive load and longer decision times. A sidebar with twelve navigation items compounds this by implying the product has twelve distinct areas of functionality. The user has absorbed the cognitive cost of processing all those options.",
   category: "Cognitive load",
@@ -179,6 +197,7 @@ const sins = [
   id: "vague-error",
   scene: 3,
   name: "ERR_PROJECT_NULL",
+  image: sinImage("err_project_null.png"),
   shortDescription: "An error message that tells the user nothing useful is worse than no error message at all.",
   longDescription: "Good error messages do three things: explain what went wrong, explain why it went wrong, and tell the user what to do next. A message like 'Something went wrong. Please try again. (ERR_PROJECT_NULL)' does none of these. The error code sounds technical and specific while communicating nothing actionable. The user has no idea whether to retry, refresh, contact support, or simply give up.",
   category: "Feedback",
@@ -194,6 +213,7 @@ const sins = [
   id: "absurd-ultimatum",
   scene: 4,
   name: "Are You Sure?",
+  image: sinImage("are_you_sure.png"),
   shortDescription: "Guilt-tripping users with fabricated loss statistics is manipulation dressed up as helpfulness.",
   longDescription: "Presenting users with a list of everything they stand to lose upon cancellation is a dark pattern that weaponizes loss aversion (the psychological tendency to feel losses more acutely than equivalent gains). When those losses are fabricated, inflated, or completely meaningless, the pattern crosses from persuasion into manipulation. The user is being emotionally coerced into staying by data that was never real to begin with.",
   category: "Manipulation",
@@ -206,6 +226,7 @@ const sins = [
   id: "fitts-button",
   scene: 4,
   name: "Catch Me If You Can",
+  image: sinImage("catch_me_if_you_can.png"),
   shortDescription: "A button that runs from your cursor and shrinks as you approach it is a direct violation of Fitts's Law.",
   longDescription: "Fitts's Law states that the time required to acquire a target is a function of the distance to the target and its size. Smaller targets that are farther away take exponentially longer to click. Designing a cancel button that actively increases its distance and decreases its size as the cursor approaches is just annoying lol.",
   category: "Accessibility",
@@ -218,6 +239,7 @@ const sins = [
   id: "confirmshaming",
   scene: 4,
   name: "So You're Giving Up?",
+  image: sinImage("so_youre_giving_up.png"),
   shortDescription: "Labeling the cancel confirmation as personal failure is emotional manipulation.",
   longDescription: "Confirmshaming uses asymmetric button language to make the user feel shame, guilt, or inadequacy for choosing to cancel. Rather than presenting a neutral choice between two options, it frames one option as personal failure and the other as the obviously correct choice for anyone with self-respect. The user is not being given a decision; they are being judged for having made one.",
   category: "Manipulation",
